@@ -13,7 +13,7 @@ export const MovieData = mac => {
           mac: mac,
         },
       }).then(response => {
-        console.log('response data', response.data.result);
+        // console.log('response data', response.data.result);
         try {
           dispatch(ActionHomes.movieData(response.data.result));
         } catch (e) {
@@ -42,7 +42,7 @@ export const MovieDetail = (mac, group) => {
           group: group,
         },
       }).then(response => {
-        console.log('data of detail', response.data.result);
+        // console.log('data of detail', response.data.result);
         try {
           dispatch(ActionHomes.DetailMovie(response.data.result));
         } catch (e) {
