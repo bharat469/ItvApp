@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import Home from '../screens/home';
 import Video from '../screens/video';
+import VideoPlayers from '../screens/videoPlayer';
 const homeStack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -17,6 +18,11 @@ const Navigation = () => {
         <homeStack.Screen
           name="Video"
           component={Video}
+          options={{headerShown: false}}
+        />
+        <homeStack.Screen
+          name="VideoPlayers"
+          component={VideoPlayers}
           options={{headerShown: false}}
         />
       </homeStack.Navigator>

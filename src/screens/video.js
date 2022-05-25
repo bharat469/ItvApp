@@ -12,6 +12,7 @@ import {MovieDetail} from '../redux/actions/movieAction';
 import Header from '../props/header';
 import LinearGradient from 'react-native-linear-gradient';
 import {Poster} from '../helpers/image';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -43,7 +44,13 @@ const Video = ({navigation, route}) => {
       <View style={styles.pickMovies}>
         <View style={styles.pickmovie}>
           <LinearGradient style={styles.header} colors={['#C30BA4', '#DA3669']}>
+            <TouchableOpacity>
+              <AntDesign name="leftcircleo" size={24} color="#fff" />
+            </TouchableOpacity>
             <Text style={styles.headerText}>{tv_group}</Text>
+            <TouchableOpacity>
+              <AntDesign name="rightcircleo" size={24} color="#fff" />
+            </TouchableOpacity>
           </LinearGradient>
           <FlatList
             data={mDetail}
@@ -82,8 +89,14 @@ const Video = ({navigation, route}) => {
                       <TouchableOpacity style={styles.posterButon}>
                         <Text style={styles.posterBtnText}>Watch Trailer</Text>
                       </TouchableOpacity>
-                      <TouchableOpacity style={styles.posterButon}>
-                        <Text style={styles.posterBtnText}>Watch Trailer</Text>
+                      <TouchableOpacity
+                        style={styles.posterButon}
+                        onPress={() =>
+                          navigation.navigate('VideoPlayers', {
+                            url: item.tv_media,
+                          })
+                        }>
+                        <Text style={styles.posterBtnText}>Watch Now</Text>
                       </TouchableOpacity>
                     </View>
                   </View>
@@ -128,6 +141,9 @@ const styles = StyleSheet.create({
     padding: 12,
     alignItems: 'center',
     width: wp('38%'),
+    flexDirection: 'row',
+    // alignItems: 'center',
+    justifyContent: 'space-around',
   },
   headerText: {
     color: '#fff',
@@ -221,12 +237,12 @@ const styles = StyleSheet.create({
   posterButon: {
     borderWidth: 2,
     borderColor: '#fff',
-    margin: 12,
-    padding: 6,
+    margin: 6,
+    padding: 9,
     borderRadius: 22,
   },
   posterBtnText: {
-    fontSize: hp('2.8%'),
+    fontSize: hp('2.4%'),
     color: '#fff',
   },
 });
